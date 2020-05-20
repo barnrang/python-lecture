@@ -14,12 +14,12 @@ def get_game(round=10):
             return "equal"
 
         if x > num:
-            print(f"Your number is larger")
             turn -= 1
+            print(f"Your number is larger, you left {turn} turn to guess")
             return "larger"
 
         if x < num:
-            print("Your number is smaller")
+            print(f"Your number is smaller, you left {turn} turn to guess")
             turn -= 1
             return "smaller"
     
