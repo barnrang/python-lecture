@@ -19,8 +19,8 @@ def get_game(round=10):
             return "larger"
 
         if x < num:
-            print(f"Your number is smaller, you left {turn} turn to guess")
             turn -= 1
+            print(f"Your number is smaller, you left {turn} turn to guess")
             return "smaller"
     
     return guess
