@@ -16,6 +16,7 @@ white = (255, 255, 255)
 black = (0, 0, 0)
 
 crashed = False
+hit = False
 
 bird = Bird()
 pipes = Pipes()
@@ -41,10 +42,13 @@ while not crashed:
 
     game_display.fill(black)
 
-    bird.update()
-    bird.render(game_display)
 
-    pipes.update()
+    if not hit:
+        bird.update()
+        pipes.update()
+        hit = pipes.check_collision(bird)
+
+    bird.render(game_display)
     pipes.render(game_display)
 
     pygame.display.update()

@@ -10,7 +10,7 @@ class Bird:
     dy = 0
     
     def __init__(self):
-        self.image = pygame.transform.scale(pygame.image.load('assets/bird.png'), (50,50))
+        self.image = pygame.transform.scale(pygame.image.load('assets/bird.png'), (config.LOAD_BIRD_WIDTH, config.LOAD_BIRD_HEIGHT))
 
     def update(self):
         self.dy += config.GRAVITY * SPF

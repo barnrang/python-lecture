@@ -12,6 +12,10 @@ class Pipe:
     def __init__(self):
         self.y_low = random.randint(config.HOLE_WIDTH + config.MIN_SHOW, config.HEIGHT - config.MIN_SHOW)
         self.y_high = self.y_low - config.HOLE_WIDTH - config.LOAD_PIPE_HEIGHT
+
+        self.y_low_hit = self.y_low
+        self.y_high_hit = self.y_low - config.HOLE_WIDTH
+
         self.x = config.WIDTH  
 
     def update(self):
@@ -36,6 +40,18 @@ class Pipes:
     def update(self):
         for pipe in self.pipes:
             pipe.update()
+
+    def check_collision(self, bird):
+        if (bird.y < 0) or ((bird.y + config.LOAD_BIRD_HEIGHT) > config.HEIGHT):
+            return True
+
+        for pipe in self.pipes:
+            if (bird.x < pipe.x < bird.x + config.LOAD_BIRD_WIDTH) or \
+                (bird.x < (pipe.x + config.LOAD_PIPE_WIDTH) < bird.x + config.LOAD_BIRD_WIDTH):
+                if (bird.y < pipe.y_high_hit) or ((bird.y + config.LOAD_BIRD_HEIGHT) > pipe.y_low_hit):
+                    return True
+        
+        return False
 
     def render(self, game_display):
         for pipe in self.pipes:
