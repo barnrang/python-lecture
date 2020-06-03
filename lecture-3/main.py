@@ -4,6 +4,7 @@ import pygame
 import config
 from bird import Bird
 from pipes import Pipe, Pipes
+from monitor import Monitor
 
 pygame.init()
 
@@ -12,14 +13,12 @@ pygame.display.set_caption('Flappy bird')
 
 clock = pygame.time.Clock()
 
-white = (255, 255, 255)
-black = (0, 0, 0)
-
 crashed = False
 hit = False
 
 bird = Bird()
 pipes = Pipes()
+monitor = Monitor()
 
 count = 0
 
@@ -40,16 +39,18 @@ while not crashed:
 
         print(event)
 
-    game_display.fill(black)
+    game_display.fill(config.BLACK)
 
 
     if not hit:
         bird.update()
         pipes.update()
-        hit = pipes.check_collision(bird)
+        hit = monitor.check_collision(bird, pipes)
+        monitor.check_score(bird, pipes)
 
     bird.render(game_display)
     pipes.render(game_display)
+    monitor.render(game_display)
 
     pygame.display.update()
     clock.tick(config.FPS)
