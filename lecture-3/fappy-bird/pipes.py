@@ -41,6 +41,9 @@ class Pipes:
         for pipe in self.pipes:
             pipe.update()
 
+    def reset(self):
+        self.__init__()
+
     def render(self, game_display):
         for pipe in self.pipes:
             pipe.render(game_display)

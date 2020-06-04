@@ -2,6 +2,7 @@ import pygame
 
 import config
 
+# Second Per Frame
 SPF = 1 / config.FPS
 
 class Bird:
@@ -15,6 +16,11 @@ class Bird:
     def update(self):
         self.dy += config.GRAVITY * SPF
         self.y += self.dy * SPF
+
+    def reset(self):
+        self.x = config.WIDTH / 4
+        self.y = config.HEIGHT / 2
+        self.dy = 0
 
     def jump(self):
         self.dy = -config.JUMP_SPEED

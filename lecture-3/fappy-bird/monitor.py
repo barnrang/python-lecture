@@ -37,6 +37,9 @@ class Monitor:
                     self.bird_enter_hole = True
                     break
 
+    def reset(self):
+        self.score = 0
+        self.bird_enter_hole = False
 
     def render(self, game_display):
         text = self.font.render(f"Score: {self.score}", True, config.RED, config.BLUE)
