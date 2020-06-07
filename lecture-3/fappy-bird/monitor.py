@@ -2,6 +2,7 @@ import pygame
 
 import config
 
+
 class Monitor:
     
     def __init__(self):
@@ -45,7 +46,12 @@ class Monitor:
         text = self.font.render(f"Score: {self.score}", True, config.RED, config.BLUE)
         text_rect = text.get_rect()
         text_rect.center = (7 * config.WIDTH // 8, config.HEIGHT // 8)
+        game_display.blit(text, text_rect)
 
+    def render_dead(self, game_display):
+        text = self.font.render(f"Press R to restart", True, config.RED, config.BLUE)
+        text_rect = text.get_rect()
+        text_rect.center = (config.WIDTH // 2, config.HEIGHT // 2)
         game_display.blit(text, text_rect)
 
     def __check_bird_in_pipe(self, bird, pipe):

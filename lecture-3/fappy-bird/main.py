@@ -8,12 +8,14 @@ from bird import Bird
 from pipes import Pipe, Pipes
 from monitor import Monitor
 
+
 class GameState(Enum):
     NOT_START = 1
     PLAYING = 2
     CRASH = 3
     RESET = 4
     QUIT = 5
+
 
 pygame.init()
 
@@ -39,7 +41,6 @@ while game_state != GameState.QUIT:
         monitor.reset()
         game_state = GameState.NOT_START
 
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_state = GameState.QUIT
@@ -49,6 +50,7 @@ while game_state != GameState.QUIT:
             if event.key == pygame.K_SPACE:
                 print("yooo")
                 bird.jump()
+
                 if game_state == GameState.NOT_START:
                     game_state = GameState.PLAYING
 
@@ -59,7 +61,6 @@ while game_state != GameState.QUIT:
         print(event)
 
     game_display.fill(config.BLACK)
-
 
     if game_state == GameState.PLAYING:
 
@@ -78,6 +79,8 @@ while game_state != GameState.QUIT:
     bird.render(game_display)
     pipes.render(game_display)
     monitor.render(game_display)
+    if game_state == GameState.CRASH:
+        monitor.render_dead(game_display)
 
     pygame.display.update()
     clock.tick(config.FPS)

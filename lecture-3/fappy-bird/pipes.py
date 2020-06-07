@@ -8,6 +8,7 @@ SPF = 1 / config.FPS
 upward_pipe = pygame.transform.scale(pygame.image.load('assets/pipe.png'), (config.LOAD_PIPE_WIDTH, config.LOAD_PIPE_HEIGHT))
 downward_pipe = pygame.transform.flip(upward_pipe, False, True)
 
+
 class Pipe:
     def __init__(self):
         self.y_low = random.randint(config.HOLE_WIDTH + config.MIN_SHOW, config.HEIGHT - config.MIN_SHOW)

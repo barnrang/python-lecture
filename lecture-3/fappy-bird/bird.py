@@ -5,6 +5,7 @@ import config
 # Second Per Frame
 SPF = 1 / config.FPS
 
+
 class Bird:
     x = config.WIDTH / 4
     y = config.HEIGHT / 2
