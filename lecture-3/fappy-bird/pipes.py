@@ -5,7 +5,8 @@ import config
 
 SPF = 1 / config.FPS
 
-upward_pipe = pygame.transform.scale(pygame.image.load('assets/pipe.png'), (config.LOAD_PIPE_WIDTH, config.LOAD_PIPE_HEIGHT))
+upward_pipe = pygame.transform.scale(pygame.image.load('assets/pipe.png'), (config.LOAD_PIPE_WIDTH,
+                                                                            config.LOAD_PIPE_HEIGHT))
 downward_pipe = pygame.transform.flip(upward_pipe, False, True)
 
 
@@ -25,7 +26,6 @@ class Pipe:
     def render(self, game_display):
         game_display.blit(upward_pipe, (self.x, self.y_low))
         game_display.blit(downward_pipe, (self.x, self.y_high))
-
 
 
 class Pipes:
