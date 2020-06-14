@@ -30,7 +30,7 @@ class Pipe:
 
 class Pipes:
     def __init__(self):
-        self.pipes = []
+        self.pipes = list()
 
     def add_pipe(self):
         self.pipes.append(Pipe())
