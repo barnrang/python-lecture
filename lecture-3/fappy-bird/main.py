@@ -39,6 +39,7 @@ while game_state != GameState.QUIT:
         bird.reset()
         pipes.reset()
         monitor.reset()
+        count = 0
         game_state = GameState.NOT_START
 
     for event in pygame.event.get():
@@ -53,6 +54,7 @@ while game_state != GameState.QUIT:
 
                 if game_state == GameState.NOT_START:
                     game_state = GameState.PLAYING
+                    count = 0
 
             # Press R to reset
             if game_state == GameState.CRASH and event.key == pygame.K_r:
@@ -79,10 +81,12 @@ while game_state != GameState.QUIT:
     bird.render(game_display)
     pipes.render(game_display)
     monitor.render(game_display)
+    monitor.print_fps(game_display, clock)
     if game_state == GameState.CRASH:
         monitor.render_dead(game_display)
 
     pygame.display.update()
-    clock.tick(config.FPS)
 
     count = (count + 1) % (2 * config.FPS)
+    print(config.FPS)
+    clock.tick(config.FPS)

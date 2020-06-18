@@ -54,6 +54,12 @@ class Monitor:
         text_rect.center = (config.WIDTH // 2, config.HEIGHT // 2)
         game_display.blit(text, text_rect)
 
+    def print_fps(self, game_display, clock):
+        fps = int(clock.get_fps())
+        text = self.font.render(f"FPS:{fps}", True, config.RED, config.BLUE)
+        game_display.blit(text, (0, 0))
+
+
     def __check_bird_in_pipe(self, bird, pipe):
         return (pipe.x < bird.x < pipe.x + config.LOAD_PIPE_WIDTH) or \
                 (pipe.x < (bird.x + config.LOAD_BIRD_WIDTH) < pipe.x + config.LOAD_PIPE_WIDTH)
